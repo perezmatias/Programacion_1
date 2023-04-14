@@ -2,16 +2,16 @@ from flask_restful import Resource
 from flask import request
 
 USUARIOS ={
-    1: {"nombre":"Marcelo","apellido":"Gallardo"},
-    2: {"nombre":"Jose","apellido":"Real"}
+    1: {"nombre":"Rodolfo","apellido":"Reno"},
+    2: {"nombre":"Juan","apellido":"Perez"}
     }
 
 USUARIOS_PROFESOR ={
-    1: {"nombre":"Roberto","apellido":"Nieto"}
+    1: {"nombre":"Julian","apellido":"Amster"}
 }
 
 USUARIOS_ALUMNO ={
-    1:{"nombre":"Marcelo","apellido":"Gallardo"}
+    1:{"nombre":"Rodolfo","apellido":"Reno"}
 }
 class Usuario(Resource):
     def get(self,id):

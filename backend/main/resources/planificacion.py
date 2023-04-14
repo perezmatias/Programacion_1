@@ -2,9 +2,9 @@ from flask_restful import Resource
 from flask import request
 
 PLANIFICACIONES ={
-    1:{1:"Press de Banca",2:"Sentadillas",3:"Remos con barra"},
-    2:{1:"Peso muerto",2:"Flexiones de pecho",3:"Dominadas"},
-    3: {1:"Sentadillas",2:"Press de banca inclinado",3:"Remo con mancuernas"}
+    1:{1:"Press de Banca",2:"Sentadillas",3:"Remos con barra",4:"Press militar",5:"Curl de biceps",6:"Extension de triceps"},
+    2:{1:"Peso muerto",2:"Flexiones de pecho",3:"Dominadas",4:"Press de hombros con mancuernas",5:"Curl de martillo", 6:"Patada de tríceps"},
+    3: {1:"Sentadillas",2:"Press de banca inclinado",3:"Remo con mancuernas", 4:"Press de hombros con barra", 5:"Curl de bíceps con mancuernas", 6:"Extensión de tríceps con mancuernas"}
 }
 
 PLANIFICACION_ALUMNO = {
@@ -46,4 +46,3 @@ class PlanificacionProfesor(Resource):
             del PLANIFICACIONES[int(id)]
             return "", 204
         return "", 404
-    
