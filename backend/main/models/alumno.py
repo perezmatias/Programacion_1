@@ -1,5 +1,4 @@
 from .. import db
-from .. import db
 from . import UsuarioModel
 
 class Alumno(db.Model):
@@ -13,6 +12,7 @@ class Alumno(db.Model):
 
     planificaciones = db.relationship("Planificacion", back_populates="alumno",cascade="all, delete-orphan")
 
+
     def __repr__(self):
         return '<Usuario: %r %r %r %r>'% (self.edad, self.peso, self.altura, self.sexo)
     
@@ -22,7 +22,7 @@ class Alumno(db.Model):
             'edad': str(self.edad),
             'peso': str(self.peso),
             'altura': str(self.altura),
-            'sexo': str(self.sexo),
+            'sexo': str(self.sexo)
 
         }
         return alumno_json
@@ -35,7 +35,7 @@ class Alumno(db.Model):
             'peso': str(self.peso),
             'altura': str(self.altura),
             'sexo': str(self.sexo),
-            'planificaciones':planificaciones,
+            'planificaciones':planificaciones
 
         }
         return alumno_json
@@ -63,6 +63,6 @@ class Alumno(db.Model):
                     edad=edad,
                     peso=peso,
                     altura=altura,
-                    sexo=sexo,
+                    sexo=sexo
 
                     )
