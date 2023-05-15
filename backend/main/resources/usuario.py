@@ -1,9 +1,8 @@
 from flask_restful import Resource
 from flask import request, jsonify
 from .. import db
-from main.models import UsuarioModel, AlumnoModel, ProfesorModel, PlanificacionModel
+from main.models import UsuarioModel, AlumnoModel, ProfesorModel, PlanificacionModel, ClaseModel
 from sqlalchemy import func, desc
-
 
 class Usuario(Resource):
     def get(self,dni):
@@ -117,6 +116,7 @@ class UsuariosAlumnos(Resource):
         #Por apellido
         if request.args.get('apellido'):
             usuarios_a=usuarios_a.filter(AlumnoModel.apellido.like("%"+request.args.get('apellido')+"%"))
+
         #Ordeno
         if request.args.get('sortby_apellido'):
             usuarios_a=usuarios_a.order_by(desc(AlumnoModel.apellido))
@@ -125,7 +125,7 @@ class UsuariosAlumnos(Resource):
         if request.args.get('sortby_nrPlanificaciones'):
             usuarios_a=usuarios_a.outerjoin(AlumnoModel.Planificaciones).group_by(AlumnoModel.id).order_by(func.count(PlanificacionModel.id).desc())
         
-        #Valor paginado
+        #Obtener valor paginado
         usuarios_a = usuarios_a.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
 
         return jsonify({'usuarios': [usuario_a.to_json() for usuario_a in usuarios_a],
@@ -162,6 +162,7 @@ class UsuariosProfesores(Resource):
         #Por nombre
         if request.args.get('nombre'):
             usuarios_p=usuarios_p.filter(ProfesorModel.nombre.like("%"+request.args.get('nombre')+"%"))
+
         #Ordeno
         if request.args.get('sortby_nombre'):
             usuarios_p=usuarios_p.order_by(desc(ProfesorModel.nombre))
@@ -169,6 +170,7 @@ class UsuariosProfesores(Resource):
         #Por apellido
         if request.args.get('apellido'):
             usuarios_p=usuarios_p.filter(ProfesorModel.apellido.like("%"+request.args.get('apellido')+"%"))
+
         #Ordeno
         if request.args.get('sortby_apellido'):
             usuarios_p=usuarios_p.order_by(desc(ProfesorModel.apellido))
@@ -177,7 +179,7 @@ class UsuariosProfesores(Resource):
         if request.args.get('sortby_nrPlanificaciones'):
             usuarios_p=usuarios_p.outerjoin(ProfesorModel.Planificaciones).group_by(ProfesorModel.id).order_by(func.count(PlanificacionModel.id).desc())
         
-        #Valor paginado
+        #Obtener valor paginado
         usuarios_p = usuarios_p.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
 
         return jsonify({'usuarios': [usuario_p.to_json() for usuario_p in usuarios_p],
@@ -187,13 +189,15 @@ class UsuariosProfesores(Resource):
                 })
 
     def post(self):
+        clases_id = request.get_json().get('clases')
         usuarios_p = ProfesorModel.from_json(request.get_json())
-        print(usuarios_p)
-        try:
-            db.session.add(usuarios_p)
-            db.session.commit()
-        except:
-            return 'Formato no correcto', 400
+
+        if clases_id:
+            clases = ClaseModel.query.filter(ClaseModel.id.in_(clases_id)).all()
+            usuarios_p.clases.extend(clases)
+            
+        db.session.add(usuarios_p)
+        db.session.commit()
         return usuarios_p.to_json(), 201
     
 class UsuarioProfesor(Resource):

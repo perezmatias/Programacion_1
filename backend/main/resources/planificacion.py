@@ -2,7 +2,7 @@ from flask_restful import Resource
 from flask import request,jsonify
 from .. import db
 from main.models import PlanificacionModel
-
+from sqlalchemy import func, desc
 
 class Planificacion(Resource):
     def get(self,id):
@@ -26,13 +26,56 @@ class Planificacion(Resource):
 
 class Planificaciones(Resource):
     def get(self):
-        planificaciones=db.session.query(PlanificacionModel).all()
-        return jsonify([planificacion.to_json() for planificacion in planificaciones])
-            
+        page = 1
+        per_page = 10
+        
+        planificaciones = db.session.query(PlanificacionModel)
+        
+        if request.args.get('page'):
+            page = int(request.args.get('page'))
+        if request.args.get('per_page'):
+            per_page = int(request.args.get('per_page'))
+        
+        #Por Profesor
+        if request.args.get('profesor'):
+            planificaciones=planificaciones.filter(PlanificacionModel.profesor_dni.like("%"+request.args.get('profesor_dni')+"%"))
+        #Ordeno
+        if request.args.get('sortby_profesor'):
+            planificaciones=planificaciones.order_by(desc(PlanificacionModel.profesor_dni))
+
+        #Por Alumno
+        if request.args.get('alumno'):
+            planificaciones=planificaciones.filter(PlanificacionModel.alumno_dni.like("%"+request.args.get('alumno_dni')+"%"))
+        
+        #Por Alumno
+        if request.args.get('sortby_alumno'):
+            planificaciones=planificaciones.order_by(desc(PlanificacionModel.alumno_dni))
+
+        #Por Fecha
+        if request.args.get('fecha'):
+            planificaciones=planificaciones.filter(PlanificacionModel.fecha.like("%"+request.args.get('fecha')+"%"))    
+        
+        #Ordeno
+        if request.args.get('sortby_fecha'):
+            planificaciones=planificaciones.order_by(desc(PlanificacionModel.fecha))
+        
+        #Obtener valor paginado
+        planificaciones = planificaciones.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
+
+        return jsonify({'planificaciones': [planificacion.to_json() for planificacion in planificaciones],
+                  'total': planificaciones.total,
+                  'pages': planificaciones.pages,
+                  'page': page
+                })
+
     def post(self):
         planificaciones=PlanificacionModel.from_json(request.get_json())
-        db.session.add(planificaciones)
-        db.session.commit()
+        print(planificaciones)
+        try:
+            db.session.add(planificaciones)
+            db.session.commit()
+        except:
+            return 'Formato no correcto', 400
         return planificaciones.to_json(), 201
 
 class PlanificacionAlumno(Resource):

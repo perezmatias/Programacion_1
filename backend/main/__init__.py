@@ -32,7 +32,7 @@ def create_app():
 
     api.add_resource(resources.UsuarioAlumnoResource, "/usuario_a/<dni>")
 
-    api.add_resource(resources.UsuariosProfesoresResource, "/usuario_p")
+    api.add_resource(resources.UsuariosProfesoresResource, "/usuarios_p")
 
     api.add_resource(resources.UsuarioProfesorResource, "/usuario_p/<dni>")
 
@@ -49,10 +49,6 @@ def create_app():
     api.add_resource(resources.ClasesResource,"/clases")
 
     api.add_resource(resources.ClaseResource,"/clase/<id>")
-
-    api.add_resource(resources.ProclasResource, "/proclas/")
-
-    api.add_resource(resources.ProclaResource, "/procla/<dni>")
 
     api.add_resource(resources.PagoResource, "/pago/<id>")
 
