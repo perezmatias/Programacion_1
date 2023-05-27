@@ -1,28 +1,28 @@
 {
 	"info": {
-		"_postman_id": "8ce21809-2b87-4c88-b0aa-6b735b5955b1",
+		"_postman_id": "af6cd83f-25bf-4fc2-9483-fce7379e6c28",
 		"name": "Grupo-E",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26916803"
 	},
 	"item": [
 		{
-			"name": "Usuario",
+			"name": "Usuario/s",
 			"item": [
 				{
-					"name": "Modificar Usuario",
+					"name": "Crear Usuarios",
 					"request": {
-						"method": "PUT",
+						"method": "POST",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
+								"key": "Authorization",
+								"value": "Beared eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NDQ0OTk0NCwianRpIjoiYTRlNzBjNTQtYTI1NS00OGE4LWI0NDQtYThkYWZhYzFlYzhlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NDQ5MDg1NDIsIm5iZiI6MTY4NDQ0OTk0NCwiZXhwIjoxNjg0NDUzNTQ0LCJyb2wiOiJhZG1pbiIsImRuaSI6NDQ5MDg1NDIsImVtYWlsIjoiYy5wb3J0YWxAYWx1bW5vLmVkdS5hciJ9.OlE_l2NvxmEKNWvnpCrMFG61ebChA3GSINRbCd7C2mE",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"apellido\": \"Lopez\",\n        \"contrasena\": \"Esunaprueba\",\n        \"dni\": \"33439347\",\n        \"email\": \"joseli@gmail.com\",\n        \"nombre\": \"Jose\",\n        \"telefono\": \"542617494852\"\n    }",
+							"raw": "{\n        \"apellido\": \"O'Hearn\",\n        \"password\": \"BabyDontHurtMe\",\n        \"dni\": \"33439347\",\n        \"email\": \"mike.ohearn@hotmail.com\",\n        \"nombre\": \"Michael\",\n        \"telefono\": \"542617494852\",\n        \"rol\": \"profesor\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -30,7 +30,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/usuario/2",
+							"raw": "http://127.0.0.1:6003/usuarios",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -38,48 +38,9 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
-								"usuario",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Eliminar Usuario",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n        \"nombre\": \"Juan Francisco\",\n        \"apellido\": \"Perez\"\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:5000/usuario/2",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"usuario",
-								"2"
+								"usuarios"
 							]
 						}
 					},
@@ -101,7 +62,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"nombre\": \"Federico\",\n        \"apellido\": \"Mercurio\"\n    }",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -109,7 +70,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/usuario/1",
+							"raw": "http://127.0.0.1:6003/usuario/33439347",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -117,47 +78,10 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
 								"usuario",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Crear Usuarios",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n        \"apellido\": \"Lopez\",\n        \"contrasena\": \"Esunaprueba\",\n        \"dni\": \"33439347\",\n        \"email\": \"joseli@gmail.com\",\n        \"nombre\": \"Jose\",\n        \"telefono\": \"542617494852\"\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:5000/usuarios",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"usuarios"
+								"33439347"
 							]
 						}
 					},
@@ -172,14 +96,14 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NDQ0NjI1NSwianRpIjoiY2RmYmVmN2YtMDE2ZC00N2NmLWJhYzUtMWU2OTk2OTAwZDYwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NDQ5MDg1NDIsIm5iZiI6MTY4NDQ0NjI1NSwiZXhwIjoxNjg0NDQ5ODU1LCJyb2wiOiJhZG1pbiIsImRuaSI6NDQ5MDg1NDIsImVtYWlsIjoiYy5wb3J0YWxAYWx1bW5vLmVkdS5hciJ9.Ud03ZJTiJ0lTt4q5dle-8DVu7HgLCvRV19qbT-QkoZM",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"apellido\": \"Lopez\",\n        \"contrasena\": \"Esunaprueba\",\n        \"dni\": \"33439347\",\n        \"email\": \"joseli@gmail.com\",\n        \"nombre\": \"Jose\",\n        \"telefono\": \"542617494852\"\n    }",
+							"raw": "{\n        \"apellido\": \"Gallo\",\n        \"contrasena\": \"clavegallo\",\n        \"dni\": \"33439345\",\n        \"email\": \"elba_gallo.h@gmail.com\",\n        \"nombre\": \"Elba\",\n        \"telefono\": \"542617429342\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -187,7 +111,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/usuarios",
+							"raw": "http://127.0.0.1:6003/usuarios",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -195,26 +119,18 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
 								"usuarios"
 							]
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "Alumno",
-			"item": [
+				},
 				{
-					"name": "Ver un Usuario Alumno",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "Modificar Usuario",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -224,7 +140,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"nombre\": \"Federico\",\n        \"apellido\": \"Mercurio\"\n    }",
+							"raw": "  {\n    \"apellido\": \"O'Hearn\",\n    \"contrasena\": \"BabyDontHurtMe\",\n    \"dni\": \"33439347\",\n    \"email\": \"mike.ohearn@hotmail.com\",\n    \"nombre\": \"Michael\",\n    \"telefono\": \"542617494852\"\n  }\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -232,7 +148,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/usuario_a/1",
+							"raw": "http://127.0.0.1:6003/usuario/33439347",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -240,10 +156,90 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
-								"usuario_a",
+								"usuario",
+								"33439347"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NDQ0OTk0NCwianRpIjoiYTRlNzBjNTQtYTI1NS00OGE4LWI0NDQtYThkYWZhYzFlYzhlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NDQ5MDg1NDIsIm5iZiI6MTY4NDQ0OTk0NCwiZXhwIjoxNjg0NDUzNTQ0LCJyb2wiOiJhZG1pbiIsImRuaSI6NDQ5MDg1NDIsImVtYWlsIjoiYy5wb3J0YWxAYWx1bW5vLmVkdS5hciJ9.OlE_l2NvxmEKNWvnpCrMFG61ebChA3GSINRbCd7C2mE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:6003/usuario/33439347",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
 								"1"
+							],
+							"port": "6003",
+							"path": [
+								"usuario",
+								"33439347"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Alumno/s",
+			"item": [
+				{
+					"name": "Crear Usuarios Alumnos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"altura\": \"1,77\",\n\t\"dni\": \"32234545\",\n\t\"edad\": \"43\",\n\t\"peso\": \"81\",\n\t\"sexo\": \"Masculino\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:6003/usuarios_a",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "6003",
+							"path": [
+								"usuarios_a"
 							]
 						}
 					},
@@ -265,7 +261,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"nombre\": \"Federico\",\n        \"apellido\": \"Mercurio\"\n    }",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -273,7 +269,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/usuarios_a",
+							"raw": "http://127.0.0.1:6003/usuarios_a",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -281,9 +277,50 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
 								"usuarios_a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver un Usuario Alumno",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:6003/usuario_a/32234545",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "6003",
+							"path": [
+								"usuario_a",
+								"32234545"
 							]
 						}
 					},
@@ -302,7 +339,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"altura\": \"1,90\",\n\t\"dni\": \"33439345\",\n\t\"edad\": \"28\",\n\t\"peso\": \"68\",\n\t\"sexo\": \"Masculino\"\n}",
+							"raw": "{    \n    \"edad\": \"43\",\n    \"peso\": \"82\",\n    \"altura\": \"1,77\",\n    \"sexo\": \"Masculino\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -310,7 +347,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/usuario_a/1",
+							"raw": "http://127.0.0.1:6003/usuario_a/32234545",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -318,10 +355,10 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
 								"usuario_a",
-								"1"
+								"32234545"
 							]
 						}
 					},
@@ -340,7 +377,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"altura\": \"1,90\",\n\t\"dni\": \"33439345\",\n\t\"edad\": \"28\",\n\t\"peso\": \"68\",\n\t\"sexo\": \"Masculino\"\n}",
+							"raw": "{         \n    \"altura\": \"1,77\",\n    \"dni\": \"32234545\",\n    \"edad\": \"43\",\n    \"peso\": \"81\",\n    \"sexo\": \"Masculino\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -348,7 +385,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/usuario_a/1",
+							"raw": "http://127.0.0.1:6003/usuario_a/32234545",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -356,17 +393,22 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
 								"usuario_a",
-								"1"
+								"32234545"
 							]
 						}
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "Profesor/es",
+			"item": [
 				{
-					"name": "Crear Usuarios Alumnos",
+					"name": "Crear Usuario Profesor",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -378,7 +420,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"altura\": \"1,90\",\n\t\"dni\": \"33439345\",\n\t\"edad\": \"28\",\n\t\"peso\": \"78\",\n\t\"sexo\": \"Masculino\"\n}",
+							"raw": "{\n\t\"dni\": 33439347,\n\t\"especialidad\": \"fisicoculturismo\",\n    \"clases\": [1,33439347]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -386,7 +428,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/usuarios_a",
+							"raw": "http://127.0.0.1:6003/usuarios_p",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -394,52 +436,9 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
-								"usuarios_a"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Profesor",
-			"item": [
-				{
-					"name": "Modificar Usuario Profesor",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n        \"nombre\": \"Juan Francisco\",\n        \"apellido\": \"Perez\"\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:5000/usuario_p/1",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"usuario_p",
-								"1"
+								"usuarios_p"
 							]
 						}
 					},
@@ -461,7 +460,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"nombre\": \"Federico\",\n        \"apellido\": \"Mercurio\"\n    }",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -469,7 +468,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/usuario_p/1",
+							"raw": "http://127.0.0.1:6003/usuario_p/33439347",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -477,87 +476,48 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
+							"path": [
+								"usuario_p",
+								"33439347"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar Usuario Profesor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NDQ0OTk0NCwianRpIjoiYTRlNzBjNTQtYTI1NS00OGE4LWI0NDQtYThkYWZhYzFlYzhlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NDQ5MDg1NDIsIm5iZiI6MTY4NDQ0OTk0NCwiZXhwIjoxNjg0NDUzNTQ0LCJyb2wiOiJhZG1pbiIsImRuaSI6NDQ5MDg1NDIsImVtYWlsIjoiYy5wb3J0YWxAYWx1bW5vLmVkdS5hciJ9.OlE_l2NvxmEKNWvnpCrMFG61ebChA3GSINRbCd7C2mE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dni\": 33439347,\n\t\"especialidad\": \"fisicoculturismo\",\n    \"clases\": [1,33439347]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:6003/usuario_p/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "6003",
 							"path": [
 								"usuario_p",
 								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Listado de profesores con clases",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n        \"nombre\": \"Juan Francisco\",\n        \"apellido\": \"Perez\"\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:5000/clases",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"clases"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Crear Usuario Profesor",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"dni\": 33439942,\n\t\"especialidad\": \"yoga\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:5000/usuarios_p",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"usuarios_p"
 							]
 						}
 					},
@@ -566,7 +526,7 @@
 			]
 		},
 		{
-			"name": "Clase",
+			"name": "Clase/s",
 			"item": [
 				{
 					"name": "Crear una Clase",
@@ -575,7 +535,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"dia\": \"Martes\",\n\t\"horario\": \"9 AM\",\n\t\"nombre\": \"aerobicos\"\n}",
+							"raw": "{\n\t\"dia\": \"Viernes\",\n\t\"horario\": \"11 AM\",\n\t\"nombre\": \"musculacion\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -583,7 +543,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/clases",
+							"raw": "http://127.0.0.1:6003/clases",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -591,7 +551,7 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
 								"clases"
 							]
@@ -605,7 +565,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/clase/1",
+							"raw": "http://127.0.0.1:6003/clase/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -613,7 +573,7 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
 								"clase",
 								"1"
@@ -628,7 +588,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/clase/2",
+							"raw": "http://127.0.0.1:6003/clase/2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -636,7 +596,7 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
 								"clase",
 								"2"
@@ -652,7 +612,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"dia\": \"Jueves\",\n\t\"horario\": \"9 AM\",\n\t\"nombre\": \"aerobicos\"\n}",
+							"raw": "{\n    \"nombre\": \"musculacion\",\n    \"dia\": \"Viernes\",\n    \"horario\": \"12 AM\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -660,7 +620,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/clase/2",
+							"raw": "http://127.0.0.1:6003/clase/2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -668,7 +628,7 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
 								"clase",
 								"2"
@@ -683,7 +643,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/clases",
+							"raw": "http://127.0.0.1:6003/clases",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -691,7 +651,7 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
 								"clases"
 							]
@@ -702,22 +662,22 @@
 			]
 		},
 		{
-			"name": "Planificacion",
+			"name": "Planificacion/es",
 			"item": [
 				{
-					"name": "Modificar Planificaciones",
+					"name": "Crear Planificaciones ",
 					"request": {
-						"method": "PUT",
+						"method": "POST",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NDQ0OTk0NCwianRpIjoiYTRlNzBjNTQtYTI1NS00OGE4LWI0NDQtYThkYWZhYzFlYzhlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NDQ5MDg1NDIsIm5iZiI6MTY4NDQ0OTk0NCwiZXhwIjoxNjg0NDUzNTQ0LCJyb2wiOiJhZG1pbiIsImRuaSI6NDQ5MDg1NDIsImVtYWlsIjoiYy5wb3J0YWxAYWx1bW5vLmVkdS5hciJ9.OlE_l2NvxmEKNWvnpCrMFG61ebChA3GSINRbCd7C2mE",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"descripcion\": \"Personalizado\",\n    \"fecha\": \"2-10-2023\",\n    \"lunes\": \"Jalones\",\n    \"martes\": \"Press\",\n    \"miercoles\": \"\",\n    \"jueves\": \" Press\",\n    \"viernes\": \"Press\",\n    \"sabado\": \"\",\n    \"alumno_dni\": \"32234953\",\n    \"profesor_dni\": \"33439370\"\n    }",
+							"raw": "{\n    \"descripcion\": \"Editar\",\n    \"fecha\": \"11-05-2023\",\n    \"lunes\": \"Jalones\",\n    \"martes\": \"Press\",\n    \"miercoles\": \"\",\n    \"jueves\": \" Press\",\n    \"viernes\": \"Press\",\n    \"sabado\": \"\",\n    \"alumno_dni\": \"32234545\",\n    \"profesor_dni\": \"33439347\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -725,7 +685,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/planificacion_p/1",
+							"raw": "http://127.0.0.1:6003/planificaciones",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -733,48 +693,9 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
-								"planificacion_p",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Eliminar Planificacion",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"descripcion\": \"Personalizado\",\n    \"fecha\": \"2-10-2023\",\n    \"lunes\": \"Jalones\",\n    \"martes\": \"Press\",\n    \"miercoles\": \"\",\n    \"jueves\": \" Press\",\n    \"viernes\": \"Press\",\n    \"sabado\": \"\",\n    \"alumno_dni\": \"32234953\",\n    \"profesor_dni\": \"33439370\"\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:5000/planificacion_p/1",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"planificacion_p",
-								"1"
+								"planificaciones"
 							]
 						}
 					},
@@ -804,7 +725,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/planificaciones_ps",
+							"raw": "http://127.0.0.1:6003/planificaciones",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -812,21 +733,56 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
-								"planificaciones_ps"
+								"planificaciones"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Listado de Planificacion de Profesor",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "Modificar Planificaciones",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"descripcion\": \"Editarlo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:6003/planificacion/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "6003",
+							"path": [
+								"planificacion",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Planificacion",
+					"request": {
+						"method": "DELETE",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -844,7 +800,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/planificacion_p/1",
+							"raw": "http://127.0.0.1:6003/planificacion/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -852,9 +808,9 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
-								"planificacion_p",
+								"planificacion",
 								"1"
 							]
 						}
@@ -885,7 +841,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/planificacion_a/1",
+							"raw": "http://127.0.0.1:6003/planificacion_a/32234545",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -893,97 +849,17 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
 								"planificacion_a",
-								"1"
+								"32234545"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Crear Planificaciones ",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"descripcion\": \"Personalizado\",\n    \"fecha\": \"2-10-2023\",\n    \"lunes\": \"Jalones\",\n    \"martes\": \"Press\",\n    \"miercoles\": \"\",\n    \"jueves\": \" Press\",\n    \"viernes\": \"Press\",\n    \"sabado\": \"\",\n    \"alumno_dni\": \"32234953\",\n    \"profesor_dni\": \"33439370\"\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:5000/planificaciones_ps",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"planificaciones_ps"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Pago",
-			"item": [
-				{
-					"name": "Modificar pagos",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id alumno\": \"1\",\n    \"pago\": \"realizado\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:5000/pago/1",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"pago",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Listado de pagos",
+					"name": "Listado de Planificacion de Profesor",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -998,7 +874,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"nombre\": \"Juan Francisco\",\n        \"apellido\": \"Perez\"\n    }",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1006,7 +882,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/pago/1",
+							"raw": "http://127.0.0.1:6003/planificacion_p/33439347",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1014,10 +890,10 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
-								"pago",
-								"1"
+								"planificacion_p",
+								"33439347"
 							]
 						}
 					},
@@ -1026,22 +902,16 @@
 			]
 		},
 		{
-			"name": "Login",
+			"name": "Auth",
 			"item": [
 				{
-					"name": "Crear acceso a la app",
+					"name": "Login",
 					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"usuario:\":\"ulaula\",\"contrasena\":\"hola434\"}",
+							"raw": "{\n        \"email\": \"c.portal@alumno.edu.ar\",\n        \"password\": \"hola123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1049,7 +919,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/login",
+							"raw": "http://127.0.0.1:6003/auth/login",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1057,9 +927,42 @@
 								"0",
 								"1"
 							],
-							"port": "5000",
+							"port": "6003",
 							"path": [
+								"auth",
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"apellido\": \"Gallo\",\n        \"password\": \"clavegallo\",\n        \"dni\": \"33439345\",\n        \"email\": \"elba_gallo.h@gmail.com\",\n        \"nombre\": \"Elba\",\n        \"telefono\": \"542617429342\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:6003/auth/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "6003",
+							"path": [
+								"auth",
+								"register"
 							]
 						}
 					},

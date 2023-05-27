@@ -3,18 +3,29 @@ from flask import request, jsonify
 from .. import db
 from main.models import UsuarioModel, AlumnoModel, ProfesorModel, PlanificacionModel, ClaseModel
 from sqlalchemy import func, desc
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from main.auth.decorators import role_required
+
 
 class Usuario(Resource):
+
+    @jwt_required(optional=True)
     def get(self,dni):
         usuario=db.session.query(UsuarioModel).get_or_404(dni)
-        return usuario.to_json()
+        current_identity = get_jwt_identity()       
+        if current_identity:
+            return usuario.to_json_complete()
+        else:
+            return usuario.to_json()
 
+    @role_required(roles=["admin", "users"])
     def delete(self,dni):
         usuario=db.session.query(UsuarioModel).get_or_404(dni)
         db.session.delete(usuario)
         db.session.commit()
         return "", 204
-        
+    
+    @jwt_required()
     def put(self,dni):
         usuario=db.session.query(UsuarioModel).get_or_404(dni)
         data=request.get_json().items()
@@ -25,6 +36,8 @@ class Usuario(Resource):
         return usuario.to_json(), 201
     
 class Usuarios(Resource):
+
+    @jwt_required()
     def get(self):
         page = 1
         per_page = 10
@@ -39,7 +52,7 @@ class Usuarios(Resource):
         if request.args.get('nombre'):
             usuarios=usuarios.filter(UsuarioModel.nombre.like("%"+request.args.get('nombre')+"%"))
         
-        #Ordeno
+        #Orden
         if request.args.get('sortby_nombre'):
             usuarios=usuarios.order_by(desc(UsuarioModel.nombre))
             
@@ -47,11 +60,11 @@ class Usuarios(Resource):
         if request.args.get('apellido'):
             usuarios=usuarios.filter(UsuarioModel.apellido.like("%"+request.args.get('apellido')+"%"))
         
-        #Ordeno
+        #Orden
         if request.args.get('sortby_apellido'):
             usuarios=usuarios.order_by(desc(UsuarioModel.apellido))
         
-        #Valor paginado
+        #Obtener valor paginado
         usuarios = usuarios.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
 
         return jsonify({'usuarios': [usuario.to_json() for usuario in usuarios],
@@ -72,10 +85,12 @@ class Usuarios(Resource):
     
 
 class UsuarioAlumno(Resource):
+    @jwt_required()
     def get(self,dni):
         usuario_a=db.session.query(AlumnoModel).get_or_404(dni)
         return usuario_a.to_json_complete()
 
+    @jwt_required()
     def put(self,dni):
         usuario_a=db.session.query(AlumnoModel).get_or_404(dni)
         data=request.get_json().items()
@@ -85,6 +100,7 @@ class UsuarioAlumno(Resource):
         db.session.commit()
         return usuario_a.to_json_complete(), 201
     
+    @role_required(roles=["admin", "users"])
     def delete(self,dni):
         usuario_a=db.session.query(AlumnoModel).get_or_404(dni)
         db.session.delete(usuario_a)
@@ -92,6 +108,7 @@ class UsuarioAlumno(Resource):
         return "", 204
     
 class UsuariosAlumnos(Resource):
+    @role_required(roles=["admin", "profesor"])
     def get(self):
         page = 1
         per_page = 10
@@ -109,15 +126,14 @@ class UsuariosAlumnos(Resource):
         #Por nombre
         if request.args.get('nombre'):
             usuarios_a=usuarios_a.filter(AlumnoModel.nombre.like("%"+request.args.get('nombre')+"%"))
-        #Ordeno
+        #Orden
         if request.args.get('sortby_nombre'):
             usuarios_a=usuarios_a.order_by(desc(AlumnoModel.nombre))
 
         #Por apellido
         if request.args.get('apellido'):
             usuarios_a=usuarios_a.filter(AlumnoModel.apellido.like("%"+request.args.get('apellido')+"%"))
-
-        #Ordeno
+        #Orden
         if request.args.get('sortby_apellido'):
             usuarios_a=usuarios_a.order_by(desc(AlumnoModel.apellido))
             
@@ -145,6 +161,8 @@ class UsuariosAlumnos(Resource):
         return usuarios_a.to_json(), 201
 
 class UsuariosProfesores(Resource):
+
+    @jwt_required(optional=True)
     def get(self):
         page = 1
         per_page = 10
@@ -155,23 +173,21 @@ class UsuariosProfesores(Resource):
             page = int(request.args.get('page'))
         if request.args.get('per_page'):
             per_page = int(request.args.get('per_page'))
-        
+    
         if request.args.get('nrPlanificaciones'):
             usuarios_p=usuarios_p.outerjoin(ProfesorModel.planificaciones).group_by(ProfesorModel.id).having(func.count(PlanificacionModel.id) >= int(request.args.get('nrPlanificaciones')))
         
         #Por nombre
         if request.args.get('nombre'):
             usuarios_p=usuarios_p.filter(ProfesorModel.nombre.like("%"+request.args.get('nombre')+"%"))
-
-        #Ordeno
+        #Orden
         if request.args.get('sortby_nombre'):
             usuarios_p=usuarios_p.order_by(desc(ProfesorModel.nombre))
 
         #Por apellido
         if request.args.get('apellido'):
             usuarios_p=usuarios_p.filter(ProfesorModel.apellido.like("%"+request.args.get('apellido')+"%"))
-
-        #Ordeno
+        #Orden
         if request.args.get('sortby_apellido'):
             usuarios_p=usuarios_p.order_by(desc(ProfesorModel.apellido))
             
@@ -201,10 +217,13 @@ class UsuariosProfesores(Resource):
         return usuarios_p.to_json(), 201
     
 class UsuarioProfesor(Resource):
+
+    @jwt_required(optional=True)
     def get(self,dni):
         usuario_p=db.session.query(ProfesorModel).get_or_404(dni)
         return usuario_p.to_json()
     
+    @jwt_required()
     def put(self,dni):
         usuario_p=db.session.query(ProfesorModel).get_or_404(dni)
         data=request.get_json().items()
