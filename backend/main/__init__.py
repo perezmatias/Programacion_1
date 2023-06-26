@@ -11,6 +11,7 @@ api = Api()
 db=SQLAlchemy()
 migrate = Migrate()
 jwt = JWTManager()
+mailsender = Mail()
 
 def create_app():
 
@@ -21,7 +22,6 @@ def create_app():
         os.mknod(os.getenv('DATABASE_PATH')+os.getenv('DATABASE_NAME'))
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////'+os.getenv('DATABASE_PATH')+os.getenv('DATABASE_NAME')
     db.init_app(app)
     migrate.init_app(app,db)
@@ -53,6 +53,10 @@ def create_app():
     api.add_resource(resources.ClasesResource,"/clases")
 
     api.add_resource(resources.ClaseResource,"/clase/<id>")
+
+    api.add_resource(resources.PermisosResource,"/permisos")
+
+    api.add_resource(resources.PermisoResource,"/permiso/<id>")
 
     api.init_app(app)
 

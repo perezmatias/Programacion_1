@@ -31,7 +31,7 @@ class Planificacion(Resource):
 
 class Planificaciones(Resource):
 
-    @role_required(roles=["admin", "alumno"])
+    @jwt_required()
     def get(self):
         page = 1
         per_page = 10
@@ -46,14 +46,14 @@ class Planificaciones(Resource):
         #Por Profesor
         if request.args.get('profesor'):
             planificaciones=planificaciones.filter(PlanificacionModel.profesor_dni.like("%"+request.args.get('profesor_dni')+"%"))
-        #Orden
+        #Ordeno
         if request.args.get('sortby_profesor'):
             planificaciones=planificaciones.order_by(desc(PlanificacionModel.profesor_dni))
 
         #Por Alumno
         if request.args.get('alumno'):
             planificaciones=planificaciones.filter(PlanificacionModel.alumno_dni.like("%"+request.args.get('alumno_dni')+"%"))
-        #Orden
+        #Ordeno
         if request.args.get('sortby_alumno'):
             planificaciones=planificaciones.order_by(desc(PlanificacionModel.alumno_dni))
 
