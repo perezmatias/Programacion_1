@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios - Gimnasio Fitness</title>
+    <!-- Enlace a Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Enlace a tu archivo CSS personalizado -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Barra de navegación lateral desplegable -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Barra de navegación lateral desplegable -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarLabel">Menú</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-unstyled">
+                <li><a href="login.html">Cerrar Sesión</a></li>
+                <li><a href="admin-dt.html">Modificar Datos</a></li>
+                <li><a href="admin.html">Inicio</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <!-- Título de la página -->
+            <h1 class="navbar-brand">Gestión de Usuarios</h1>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <!-- Barra de búsqueda -->
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Buscar usuario por nombre" aria-label="Buscar usuario por nombre">
+                    <button class="btn btn-primary" type="button">Buscar</button>
+                </div>
+
+                <!-- Listado de usuarios -->
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="admin-user.html">Usuario 1</a></li>
+                    <li class="list-group-item"><a href="admin-user.html">Usuario 2</a></li>
+                    <!-- Agrega más usuarios aquí -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enlaces a archivos JavaScript (si es necesario) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
