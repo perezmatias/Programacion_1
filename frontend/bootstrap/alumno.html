@@ -7,7 +7,7 @@
     <!-- Enlace a Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Enlace a tu archivo CSS personalizado -->
-    <link href="style.css" rel="stylesheet">
+    <link href="css/style-users.css" rel="stylesheet">
 </head>
 <body>
     <!-- Barra de navegación lateral -->
@@ -24,17 +24,8 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <!-- Imagen del usuario -->
-                <img src="ruta_de_la_imagen_del_usuario.jpg" alt="Usuario" class="img-fluid rounded-circle">
+                <img src="css/alumno.jpg" alt="Usuario" class="img-fluid rounded-circle">
                 <h2 class="mt-3">Hola! Usuario Alumno</h2>
-                <!-- Botón "Clases" -->
-                <button id="btnClases" class="btn btn-primary">Clases</button>
-                <!-- Área para mostrar las clases (inicialmente oculta) -->
-                <div id="clasesContainer" class="container mt-3" style="display: none;">
-                    <h3>Tus Clases:</h3>
-                    <ul id="listaClases">
-                        <!-- Aquí se mostrarán las clases del usuario -->
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
@@ -47,39 +38,40 @@
         </div>
         <div class="offcanvas-body">
             <ul class="list-unstyled">
-                <li><a href="login.html">Cerrar Sesión</a></li>
-                <li><a href="alum-dt.html">Modificar Datos</a></li>
                 <li><a href="alumno.html">Inicio</a></li>
+                <li><a href="alum-dt.html">Modificar Datos</a></li>
+                <li><a href="login.html">Cerrar Sesión</a></li>
             </ul>
         </div>
     </div>
 
-    <!-- Enlaces a los scripts de Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const btnClases = document.getElementById('btnClases');
-            const clasesContainer = document.getElementById('clasesContainer');
-            const listaClases = document.getElementById('listaClases');
+    <!-- Contenido principal -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <!-- Barra lateral desplegable -->
+                <div class="accordion" id="Accordion">
+                    <!-- Desplegable "Alumnos" -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Heading">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#Collapse" aria-expanded="true" aria-controls="Collapse">
+                                Clases
+                            </button>
+                        </h2>
+                        <div id="Collapse" class="accordion-collapse collapse show" aria-labelledby="Heading" data-bs-parent="#Accordion">
+                            <div class="accordion-body">
+                                <!-- Lista de alumnos con enlaces a pc-alum.html -->
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="planificacion.html">Clase 1</a></li>
+                                    <li class="list-group-item"><a href="planificacion.html">Clase 2</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            // Simula obtener las clases del usuario (puedes reemplazar con tus propios datos)
-            const clasesUsuario = ['Clase 1', 'Clase 2', 'Clase 3'];
-
-            // Función para mostrar u ocultar la lista de clases
-            function toggleClases() {
-                if (clasesContainer.style.display === 'none') {
-                    clasesContainer.style.display = 'block';
-                    // Muestra las clases del usuario
-                    listaClases.innerHTML = clasesUsuario.map(clase => `<li><a href="planificacion.html?clase=${encodeURIComponent(clase)}">${clase}</a></li>`).join('');
-                } else {
-                    clasesContainer.style.display = 'none';
-                    listaClases.innerHTML = '';
-                }
-            }
-
-            // Agrega un evento click al botón "Clases"
-            btnClases.addEventListener('click', toggleClases);
-        });
-    </script>
 </body>
 </html>
