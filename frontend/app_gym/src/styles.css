@@ -1,0 +1,192 @@
+/* You can add global styles to this file, and also import other style files */
+/* Estilo para la barra lateral desplegada */
+.offcanvas.show {
+    background-color: #282729;
+}
+
+.offcanvas-header {
+    background-color: #1D201F;
+    color: #fff;
+}
+
+.offcanvas-title {
+    color: #ffffff;
+}
+
+.offcanvas-body {
+    padding: 20px;
+}
+
+/* Estilo para los elementos de la lista en la barra lateral */
+.offcanvas-body ul.list-unstyled li a {
+    color: #00875f;
+}
+
+.offcanvas-body ul.list-unstyled li a:hover {
+    background-color: transparent;
+    color: #00875f;
+}
+
+/* Estilo para la barra de navegación lateral */
+.navbar-dark {
+    background-color: #333;
+}
+
+/* Estilo para el botón de menú */
+.navbar-toggler-icon {
+    color: white;
+}
+
+/* Estilo para la imagen de usuario */
+.img-fluid {
+    border: 5px solid #333;
+    width: 100px; 
+    height: 100px; 
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* Estilo para el saludo del usuario */
+h2 {
+    font-size: 24px;
+    color: #a9a9a9;
+    margin-top: 0; 
+}
+
+/* Estilo para el contenedor de la imagen y el saludo */
+.col-md-6.offset-md-3 {
+    text-align: center;
+}
+
+/* Estilo para el fondo de la página */
+body {
+    background-color: #474747; 
+}
+
+/* Estilo para el card-body */
+.card-body {
+    background-color: #353535;
+    padding: 20px;
+    border: 1px solid #000000; 
+    border-radius: 10px; 
+    box-shadow: 0 2px 4px rgba(179, 179, 179, 0.1); 
+}
+
+/*Estilo para el color del texto dentro del card-body */
+.card-body {
+    color: #ffffff;
+}
+
+/* Estilo para la clase .btn */
+.btn {
+    background-color: #00875f;
+    color: #000000; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    text-decoration: none; 
+    display: inline-block; 
+    cursor: pointer; 
+}
+
+/* Estilo para el botón cuando se pasa el ratón por encima */
+.btn:hover {
+    background-color: #016144; 
+}
+
+/* Estilos para la barra de búsqueda */
+.input-group {
+    margin-bottom: 20px;
+}
+
+/* Estilos para el cuadro de entrada de texto en la barra de búsqueda */
+.input-group input[type="text"] {
+    border: 1px solid #000; 
+    border-radius: 5px;
+}
+
+/* Estilos para el botón de búsqueda en la barra de búsqueda */
+.input-group button {
+    background-color: #00875f; 
+    border: none; 
+    border-radius: 0 5px 5px 0; 
+    color: #000; 
+    cursor: pointer;
+}
+
+/* Estilos para el botón de búsqueda en estado hover (al pasar el ratón por encima) */
+.input-group button:hover {
+    background-color: #016144; 
+}
+
+/* Estilos para los elementos de la lista de usuarios */
+.list-group-item {
+    background-color: #878472; 
+    border: none; 
+    color: #ffffff; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+}
+
+/* Estilos para los enlaces dentro de los elementos de la lista de usuarios */
+.list-group-item a {
+    color: #ffffff; 
+    text-decoration: none; 
+}
+
+/* Estilos para los enlaces dentro de los elementos de la lista de usuarios cuando se pasa el ratón por encima */
+.list-group-item a:hover {
+    color: #016144;
+}
+
+/* Cambiar el color de fondo de elementos con la clase mb-3 */
+.mb-3 {
+    background-color: #878472; 
+    color: #fff; 
+}
+
+/* Estilo para los encabezados de los acordeones */
+.accordion-button {
+    background-color: #272828;
+    color: #ffffff;
+    border: none;
+    border-radius: 0;
+}
+
+/* Estilo para el contenido de los acordeones */
+.accordion-body {
+    background-color: #353535;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+/* Estilo para el nombre del alumno */
+h2 {
+    color: #fffdfd;
+    margin-top: 10px;
+}
+
+/* Estilo para la descripción del alumno */
+p {
+    color: #ffffff;
+}
+
+h3 {
+    color: #fffdfd;
+    margin-top: 10px;
+}
+
+li {
+    color: #fffdfd;
+    margin-top: 10px;
+}
+/* Estilo para los enlaces (links) */
+a {
+    color: #00875f; 
+    text-decoration: none; 
+}
+
+/* Estilo para los enlaces cuando se les pasa el mouse por encima (hover) */
+a:hover {
+    color: #016144;
+}

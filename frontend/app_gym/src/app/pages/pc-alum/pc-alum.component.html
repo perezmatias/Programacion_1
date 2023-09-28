@@ -1,0 +1,85 @@
+<p>pc-alum works!</p>
+<!-- Barra de navegación lateral desplegable -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Barra de navegación lateral desplegable -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="sidebarLabel">Menú</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="list-unstyled">
+            <li><a routerLink="/profesor">Inicio</a></li>
+            <li><a routerLink="/prof-dt">Modificar Datos</a></li>
+            <li><a routerLink="/login">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- Barra de navegación lateral -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!-- Título de la página -->
+        <h1 class="navbar-brand">Control de Alumno</h1>
+    </div>
+</nav>
+
+<!-- Contenido principal -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <!-- Foto del alumno -->
+            <img src="assets/alumno.jpg" alt="Alumno" class="img-fluid rounded-circle">
+            <!-- Nombre del alumno -->
+            <h2 class="mt-3">Nombre del Alumno</h2>
+        </div>
+        <div class="col-md-6">
+            <!-- Datos del alumno (descripción) -->
+            <p>Descripción del alumno:</p>
+            <p>Aquí puedes agregar información específica sobre el alumno, como datos personales, objetivos, etc.</p>
+        </div>
+        <div class="col-md-3">
+            <!-- Barra lateral desplegable -->
+            <div class="accordion" id="alumnoAccordion">
+                <!-- Desplegable "Ejercicios" -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="ejerciciosHeading">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ejerciciosCollapse" aria-expanded="true" aria-controls="ejerciciosCollapse">
+                            Ejercicios
+                        </button>
+                    </h2>
+                    <div id="ejerciciosCollapse" class="accordion-collapse collapse show" aria-labelledby="ejerciciosHeading" data-bs-parent="#alumnoAccordion">
+                        <div class="accordion-body">
+                            <!-- Lista de ejercicios -->
+                            <ul class="list-group">
+                                <li class="list-group-item">Ejercicio 1 <button class="btn btn-danger btn-sm float-end">Eliminar</button></li>
+                                <li class="list-group-item">Ejercicio 2 <button class="btn btn-danger btn-sm float-end">Eliminar</button></li>
+                                <!-- Agrega más ejercicios aquí -->
+                            </ul>
+                            <!-- Formulario para agregar ejercicios -->
+                            <form class="mt-3">
+                                <div class="mb-3">
+                                    <label for="nombreEjercicio" class="form-label">Nombre del Ejercicio</label>
+                                    <input type="text" class="form-control" id="nombreEjercicio" placeholder="Nombre del ejercicio">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Agregar Ejercicio</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Enlaces a archivos JavaScript (si es necesario) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

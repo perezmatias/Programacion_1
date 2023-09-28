@@ -1,0 +1,68 @@
+/* Fondo */
+/*body {
+    background-color: black;
+    color: white;
+    background-image: url("img4.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+}
+
+
+/* Estilo para las cajas de día */
+.day-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+}
+
+/*Imagen*/
+.img{
+    max-width: 250px;
+    max-height: 250px;
+    margin-left: 430px;
+}
+
+/* Estilos para las cajas de días */
+.day-box {
+    background-color: rgba(0, 0, 0, 0.5); 
+    border: 1px solid black; 
+    padding: 10px;
+    margin: 10px;
+    text-align: center; 
+    color: white; 
+    margin-bottom: 40px;
+    margin-left: 20px;
+}
+
+/* Boton de iniciar sesión */
+.btn-login {
+    background-color: #00875f; 
+    color: white; 
+    margin: 0 auto; 
+    padding: 10px 55px;
+    font-size: 18px; 
+    margin-bottom: 15px;
+    display: inline-block; 
+    max-width: 200px; 
+}
+
+/* Estilos para las imágenes */
+.img-fluid {
+    max-width: 35%; 
+    height: 100px; 
+}
+
+/* Estilos para el texto junto a las imágenes */
+p {
+    font-size: 16px;
+    color: #e2e0e0; 
+    margin-top: 10px; 
+}
+
+/* Estilos para las columnas que contienen imágenes y texto */
+.col-md-4 {
+    margin-bottom: 20px; 
+    
+}
