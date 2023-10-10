@@ -18,7 +18,7 @@ import { ProfDtComponent } from './pages/prof-dt/prof-dt.component';
 import { ProfesorComponent } from './pages/profesor/profesor.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { RegisterComponent } from './pages/register/register.component';
-
+import { authsessionGuard } from './guards/authsession.guard';
 const routes: Routes = [
 { path:'home', component: HomeComponent  },
 { path:'login', component: LoginComponent  },

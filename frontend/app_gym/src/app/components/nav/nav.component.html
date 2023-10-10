@@ -1,0 +1,23 @@
+<!-- Barra de navegación lateral desplegable -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Barra de navegación lateral desplegable -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="sidebarLabel">Menú</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="list-unstyled">
+            <li><a routerLink="/admin">Inicio</a></li>
+            <li><a routerLink="/admin-dt">Modificar Datos</a></li>
+            <li><a *ngIf="isToken" href="?" (click)="cerrarSesion()" routerLink="/login">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+</div>

@@ -3,30 +3,30 @@
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <h2>Bienvenido a Gimnasio Fitness</h2>
-            <form>
+            <form [formgroup]="loginForm">
                 <div class="form-group">
                     <label for="email" class="email">E-mail</label>
-                    <input type="email" class="form-control" id="email" placeholder="Correo Electrónico" required>
+                    <input type="email" class="form-control" formControlName="email" id="email" placeholder="Correo Electrónico" required>
                 </div>
                 <div class="form-group">
                     <label for="password" class="contraseña">Contraseña</label>
-                    <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+                    <input type="password" class="form-control" formControlName="ássword" id="password" placeholder="Contraseña" required>
                 </div>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="recordar">
                     <label class="form-check-label" for="recordar">Recordarme</label>
                 </div>
-                <button type="submit" class="btn btn-primary btn-login">Iniciar Sesión</button>
+                <button type="submit" class="btn btn-primary btn-login" (click)="submit()">Iniciar Sesión</button>
             </form>
             <p><a routerLink="/recovery">¿Olvidaste tu contraseña?</a></p>
 
             <!-- Botones para redirigir a las páginas correspondientes -->
-            <div class="text-center">
+            <!--<div class="text-center">
                 <p class="rol">Selecciona tu rol:</p>
                 <a routerLink="/admin" class="btn btn-info">Admin</a>
                 <a routerLink="/alumno" class="btn btn-warning">Alumno</a>
                 <a routerLink="/profesor" class="btn btn-success">Profesor</a>
-            </div>
+            </div>-->
             <div class="text-center mt-3">
                 <p class="no_cuenta">¿No tienes una cuenta?</p>
                 <a routerLink="/register" class="btn btn-primary btn-register">Regístrate</a>

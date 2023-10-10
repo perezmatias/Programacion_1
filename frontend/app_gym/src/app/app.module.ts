@@ -21,6 +21,11 @@ import { PlanificacionComponent } from './pages/planificacion/planificacion.comp
 import { ProfClassComponent } from './pages/prof-class/prof-class.component';
 import { ProfDtComponent } from './pages/prof-dt/prof-dt.component';
 import { ProfesorComponent } from './pages/profesor/profesor.component';
+import { NavComponent } from './components/nav/nav.component';
+
+import {HttpClientModule} from '@angular/common/http'
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -42,11 +47,15 @@ import { ProfesorComponent } from './pages/profesor/profesor.component';
     PlanificacionComponent,
     ProfClassComponent,
     ProfDtComponent,
-    ProfesorComponent
+    ProfesorComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
