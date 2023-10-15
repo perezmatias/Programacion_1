@@ -32,7 +32,7 @@ const routes: Routes = [
 { path:'gest-user', component: GestUserComponent  },
 { path:'pc-alum', component: PcAlumComponent  },
 { path:'pc-gestor', component: PcGestorComponent  },
-{ path:'planificacion', component: PlanificacionComponent  },
+{ path:'planificacion', component: PlanificacionComponent, canActivate:[authsessionGuard]  },
 { path:'prof-class', component: ProfClassComponent  },
 { path:'prof-dt', component: ProfDtComponent  },
 { path:'profesor', component: ProfesorComponent  },

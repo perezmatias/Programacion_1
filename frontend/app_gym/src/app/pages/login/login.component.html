@@ -3,21 +3,22 @@
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <h2>Bienvenido a Gimnasio Fitness</h2>
-            <form [formgroup]="loginForm">
+            <form [formGroup]="loginForm">
                 <div class="form-group">
                     <label for="email" class="email">E-mail</label>
                     <input type="email" class="form-control" formControlName="email" id="email" placeholder="Correo Electrónico" required>
                 </div>
                 <div class="form-group">
                     <label for="password" class="contraseña">Contraseña</label>
-                    <input type="password" class="form-control" formControlName="ássword" id="password" placeholder="Contraseña" required>
+                    <input type="password" class="form-control" formControlName="password" id="password" placeholder="Contraseña" required>
                 </div>
-                <div class="form-check">
+                <!-- <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="recordar">
                     <label class="form-check-label" for="recordar">Recordarme</label>
-                </div>
-                <button type="submit" class="btn btn-primary btn-login" (click)="submit()">Iniciar Sesión</button>
-            </form>
+                </div> -->
+                
+            </form> 
+            <button type="submit" class="btn btn-primary btn-login" (click)="submit()">Iniciar Sesión</button>
             <p><a routerLink="/recovery">¿Olvidaste tu contraseña?</a></p>
 
             <!-- Botones para redirigir a las páginas correspondientes -->

@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./alumno.component.css']
 })
 export class AlumnoComponent {
-
+  selectedRole = localStorage.getItem('role')
+  constructor() {}
+  arrayUserData = [
+    {},
+    ]
+  ngOnInit(): void {
+    console.log('arrayAlumData: ', this.arrayUserData);
+  }
 }

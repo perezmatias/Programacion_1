@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { Observable, take } from 'rxjs';
-import {Router} from '@angular/router'
+import { Router } from '@angular/router'
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     this.router.navigate(['/','home'])
   }
 }
