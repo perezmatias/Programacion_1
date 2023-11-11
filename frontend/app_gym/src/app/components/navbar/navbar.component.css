@@ -1,0 +1,18 @@
+/* Barra de Navegación */
+
+.custom-bg-color{
+  background-color: #1e293b;
+}
+
+.logo{
+    width: 50px;
+    height: 50px;
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+.nav-item a.nav-link {
+  margin: 0 5vw 0 5vw; /* Ajusta el valor de margen según tu preferencia */
+}

@@ -29,7 +29,7 @@ class Planificacion(db.Model):
         planificacion_json = {
             'id': self.id,
             'descripcion': str(self.descripcion),
-            'fecha': str(self.fecha.strftime("%d-%m-%Y")),
+            'fecha': str(self.fecha.strftime("%Y-%m-%d")),
             'lunes': str(self.lunes),
             'martes': str(self.martes),
             'miercoles': str(self.miercoles),
