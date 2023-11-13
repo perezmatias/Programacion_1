@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service'
-import { Router } from '@angular/router'
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import jwtDecode from 'jwt-decode';
+
+
 
 @Component({
   selector: 'app-login',
@@ -11,48 +13,46 @@ import jwtDecode from 'jwt-decode';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
-
+ 
   constructor(
     private authService: AuthService,
-    private router: Router,
+    private router : Router,
     private formBuilder: FormBuilder
-   ) {}
+  ) {}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['',Validators.required],
-      password: ['',Validators.required]
+      email: ['c.portal@alumno.um.edu.ar', Validators.required],
+      password: ['hola123', Validators.required]
     })
   }
 
-
-   login(dataLogin:any = {}) {
-    //dataLogin = {email: "maag.perez@alumno.um.edu.ar" ,password: "hola123"}
-    console.log('Comprobando credenciales');
+  login(dataLogin:any = {} ){
+    //dataLogin = {email: 'johnnylawrence@nomail.com', password: 'clave1234'}
+    console.log('comprobando credenciales');
     this.authService.login(dataLogin).subscribe({
       next: (rta:any) => {
-        //alert('Login exitoso');
         console.log('Respuesta login: ',rta.access_token);
-        localStorage.setItem('token', rta.access_token);
-        
+        localStorage.setItem('token', rta.access_token)
+
         const decodedToken: any = jwtDecode(rta.access_token);
         localStorage.setItem('role', decodedToken.rol)
-        
-        if (localStorage.getItem('role') === 'admin') {
-          this.router.navigateByUrl('admin');
-        } else if (localStorage.getItem('role') === 'profesor') {
-          this.router.navigateByUrl('profesor');
-        } else if (localStorage.getItem('role') === 'users') {
-          this.router.navigateByUrl('alumnos');
+        localStorage.setItem('dni', decodedToken.dni)
+
+        if (localStorage.getItem('role') === 'admin' || localStorage.getItem('role') === 'profesor') {
+          this.router.navigateByUrl('vInicio');
+        } else if (localStorage.getItem('role') === 'user') {
+          this.router.navigateByUrl('/vPerfil');
         } else {
           console.error('No posee rol de usuario');
         }
 
-
       }, error:(error) => {
-        alert('Credenciales incorectas');
-        localStorage.removeItem('token');
-        localStorage.removeItem('role')
+          alert('Credenciales incorrectas');
+          localStorage.removeItem('dni');
+          localStorage.removeItem('role');
+          localStorage.removeItem('token');
+          
       }, complete: () => {
         console.log('Finalizo')
       }
@@ -64,7 +64,7 @@ export class LoginComponent {
       console.log('Form login: ',this.loginForm.value);
       this.login(this.loginForm.value)
     } else {
-      alert('Formulario invalido');
+      alert('Formulario inválido');
     }
   }
 }

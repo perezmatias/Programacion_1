@@ -1,93 +1,18 @@
-/* Fondo */
-/*body {
-    background-color: black;
-    color: white;
-    background-image: url("img4.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
 
+/*Estilos para login */
+.login-centrado{
+    align-items: center;
+    height: 80vh;
 }
-/*Titulo */
-h2 {
-    color: white;
-    margin-left: 48px;
+.btn{
+    margin: 1%;
+    background-color: #fad201;
+    color: black;
 }
-
-/* Correo y pass */
-.form-control {
-    background-color: #303030; 
-    color: white; 
-    place-content: white;
-    margin-bottom: 30px;
+#email{
+  margin-bottom: 15px;
 }
-/*texto correo y pass*/
-.email{
-    color: aliceblue;
-}
-.contraseña{
-    color: aliceblue;
+#password{
+  margin-bottom: 15px;
 }
 
-/*  placeholders de correo y pass */
-.form-control::placeholder {
-    color: rgb(168, 166, 166); 
-}
-
-/* Boton de iniciar sesión */
-.btn-login {
-    background-color: #00875f; 
-    color: white; 
-    margin-left: 170px;
-    padding: 10px 55px;
-    font-size: 18px; 
-    margin-bottom: 15px;
-}
-
-/* check y recuerdame */
-.form-check-input, .form-check-label {
-    color: #00bcd4; 
-}
-
-/* Recuperar contraseña" */
-p a {
-    color: #00bcd4; 
-}
-
-/* Botones de rol */
-.text-center p {
-    font-weight: bold;
-}
-
-
-.btn-info, .btn-warning, .btn-success {
-    background-color: #00875f;
-    color: white; 
-    margin-bottom: 10px;
-}
-/*Texto rol*/
-.rol {
-    color: aliceblue;
-}
-/*Texto rol*/
-.no_cuenta {
-    color: aliceblue;
-}
-
-/* Registrate*/
-.btn-register {
-    background-color: #00875f; 
-    color: white; 
-    padding: 10px 55px;
-    font-size: 18px
-}
-
-/*Titulo registro*/
-.tit_registro{
-    margin-left: 200px;
-}
-
-/*Titulo recuperar*/
-.tit_recuperar{
-    margin-left: 100px;
-}

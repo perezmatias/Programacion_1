@@ -1,36 +1,28 @@
-<p>login works!</p>
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h2>Bienvenido a Gimnasio Fitness</h2>
-            <form [formGroup]="loginForm">
-                <div class="form-group">
-                    <label for="email" class="email">E-mail</label>
-                    <input type="email" class="form-control" formControlName="email" id="email" placeholder="Correo Electrónico" required>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="contraseña">Contraseña</label>
-                    <input type="password" class="form-control" formControlName="password" id="password" placeholder="Contraseña" required>
-                </div>
-                <!-- <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="recordar">
-                    <label class="form-check-label" for="recordar">Recordarme</label>
-                </div> -->
-                
-            </form> 
-            <button type="submit" class="btn btn-primary btn-login" (click)="submit()">Iniciar Sesión</button>
-            <p><a routerLink="/recovery">¿Olvidaste tu contraseña?</a></p>
+<app-navbar></app-navbar>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
 
-            <!-- Botones para redirigir a las páginas correspondientes -->
-            <!--<div class="text-center">
-                <p class="rol">Selecciona tu rol:</p>
-                <a routerLink="/admin" class="btn btn-info">Admin</a>
-                <a routerLink="/alumno" class="btn btn-warning">Alumno</a>
-                <a routerLink="/profesor" class="btn btn-success">Profesor</a>
-            </div>-->
-            <div class="text-center mt-3">
-                <p class="no_cuenta">¿No tienes una cuenta?</p>
-                <a routerLink="/register" class="btn btn-primary btn-register">Regístrate</a>
+
+<!-- Iniciar sesión -->
+<div class="mt-5 container">
+    <div class="row justify-content-center row1 login-centrado">
+        <div class="col-md-6">
+            <div class="d-flex flex-column align-items-center">
+                <h1 class="title-main">Iniciar sesión</h1>
+                <form [formGroup]='loginForm'>
+                    <div>
+                        <label for="email" class="form-label" style="font-weight: bold">Correo electrónico</label>
+                        <input type="email" class="form-control" formControlName="email" placeholder="Tu correo electrónico">
+                    </div>
+                    <div>
+                        <label for="password" class="form-label" style="font-weight: bold">Contraseña</label>
+                        <input type="password" class="form-control" formControlName="password" placeholder="Tu contraseña">
+                    </div>
+                    <div class="text-center">
+                        <a type="button" (click)="submit()" class="btn btn-dark col-10">Ingresar</a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
