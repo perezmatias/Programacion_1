@@ -2,7 +2,7 @@ from flask_restful import Resource
 from flask import request, jsonify
 from .. import db
 from main.models import UsuarioModel, AlumnoModel, ProfesorModel, PlanificacionModel, ClaseModel
-from sqlalchemy import func, desc
+from sqlalchemy import func, desc, or_, and_
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import role_required
 
@@ -24,12 +24,16 @@ class Usuario(Resource):
         db.session.commit()
         return "", 204
     
-    @role_required(roles=["admin"])
     def put(self,dni):
         usuario=db.session.query(UsuarioModel).get_or_404(dni)
-        data=request.get_json().items()
-        for key, value in data:
-            setattr(usuario, key, value)
+        data=request.get_json()
+
+        for key, value in data.items():
+            if key == 'password':
+                usuario.plain_password = value
+            else:
+                setattr(usuario, key, value)
+
         db.session.add(usuario)
         db.session.commit()
         return usuario.to_json(), 201
@@ -38,6 +42,7 @@ class Usuarios(Resource):
 
     @jwt_required()
     def get(self):
+        role = request.args.get('rol')
         page = 1
         per_page = 10
         usuarios=db.session.query(UsuarioModel)
@@ -48,20 +53,35 @@ class Usuarios(Resource):
             per_page = int(request.args.get('per_page'))
 
         #Por nombre
-        if request.args.get('nombre'):
-            usuarios=usuarios.filter(UsuarioModel.nombre.like("%"+request.args.get('nombre')+"%"))
         
-        #Ordeno
-        if request.args.get('sortby_nombre'):
-            usuarios=usuarios.order_by(desc(UsuarioModel.nombre))
+        if request.args.get('search_term'):
+            search_term = request.args.get('search_term')
+            search_terms = search_term.split(' ')
             
-        #Por apellido
-        if request.args.get('apellido'):
-            usuarios=usuarios.filter(UsuarioModel.apellido.like("%"+request.args.get('apellido')+"%"))
-        
-        #Ordeno
-        if request.args.get('sortby_apellido'):
-            usuarios=usuarios.order_by(desc(UsuarioModel.apellido))
+            if len(search_terms) == 1:
+                # Si solo hay un término en la búsqueda, busca en el nombre o en el apellido.
+                usuarios = usuarios.filter(or_(
+                    UsuarioModel.nombre.like(f"%{search_term}%"), 
+                    UsuarioModel.apellido.like(f"%{search_term}%")
+                ))
+            else:
+                # Si hay dos términos, busca en el nombre y en el apellido.
+                usuarios = usuarios.filter(and_(
+                    UsuarioModel.nombre.like(f"%{search_terms[0]}%"),
+                    UsuarioModel.apellido.like(f"%{search_terms[1]}%")
+                ))
+
+        #Por rol 'user'
+        if request.args.get('user'):
+            usuarios = usuarios.filter(UsuarioModel.rol == 'user')
+
+        #Por rol 'profesor'
+        if request.args.get('profesor'):
+            usuarios = usuarios.filter(UsuarioModel.rol == 'profesor')
+
+        if role:
+            usuarios = usuarios.filter(UsuarioModel.rol == role)
+
         
         #Obtener valor paginado
         usuarios = usuarios.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
@@ -207,17 +227,15 @@ class UsuariosProfesores(Resource):
 
     @role_required(roles=["admin"])
     def post(self):
-        clases_id = request.get_json().get('clases')
         usuarios_p = ProfesorModel.from_json(request.get_json())
-
-        if clases_id:
-            clases = ClaseModel.query.filter(ClaseModel.id.in_(clases_id)).all()
-            usuarios_p.clases.extend(clases)
-            
-        db.session.add(usuarios_p)
-        db.session.commit()
+        print(usuarios_p)
+        try:
+            db.session.add(usuarios_p)
+            db.session.commit()
+        except:
+            return 'Formato no correcto', 400
         return usuarios_p.to_json(), 201
-    
+
 class UsuarioProfesor(Resource):
 
     @jwt_required(optional=True)

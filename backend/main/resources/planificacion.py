@@ -5,6 +5,7 @@ from main.models import PlanificacionModel
 from sqlalchemy import func, desc
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import role_required
+from datetime import datetime
 
 class Planificacion(Resource):
     @jwt_required()
@@ -19,11 +20,20 @@ class Planificacion(Resource):
         db.session.commit()
         return "", 204
     
-    @role_required(roles=["admin"])
+    @role_required(roles=["admin", "profesor"])
     def put(self,id):
         planificacion=db.session.query(PlanificacionModel).get_or_404(id)
-        data=request.get_json().items()
-        for key, value in data:
+        data=request.get_json()
+        
+        if 'fecha' in data:
+            fecha_str = data['fecha']
+            try:
+                fecha = datetime.strptime(fecha_str, '%Y-%m-%d')
+                data['fecha'] = fecha
+            except ValueError:
+                return {"message": "Formato de fecha incorrecto. Use 'yyyy-MM-dd'."}, 400
+
+        for key, value in data.items():
             setattr(planificacion, key, value)
         db.session.add(planificacion)
         db.session.commit()
@@ -73,7 +83,7 @@ class Planificaciones(Resource):
                   'page': page
                 })
 
-    @role_required(roles=["admin"])
+    @role_required(roles=["admin", "profesor"])
     def post(self):
         planificaciones=PlanificacionModel.from_json(request.get_json())
         print(planificaciones)

@@ -25,7 +25,7 @@ class Usuario(db.Model):
         return check_password_hash(self.password, password)
     
     def __repr__(self):
-        return '<Usuario: %r %r %r %r %r>'% (self.dni, self.nombre, self.apellido, self.email, self.telefono)
+        return '<Usuario: %r %r %r %r %r>'% (self.dni, self.nombre, self.apellido, self.email, self.telefono, self.rol)
     
     def to_json(self):
         usuario_json = {
@@ -34,6 +34,8 @@ class Usuario(db.Model):
             'apellido': str(self.apellido),
             'email': str(self.email),
             'telefono': str(self.telefono),
+            'password':str(self.password),
+            'rol': str(self.rol)
         }
         return usuario_json
     
@@ -46,6 +48,8 @@ class Usuario(db.Model):
             'apellido': str(self.apellido),
             'email': str(self.email),
             'telefono': str(self.telefono),
+            'rol': str(self.rol),
+            'password':str(self.password),
             'alumno': alumno,
             'profesor': profesor
 
@@ -58,7 +62,8 @@ class Usuario(db.Model):
             'nombre': str(self.nombre),
             'apellido': str(self.apellido),
             'telefono': str(self.telefono),
-
+            'rol': str(self.rol)
+            
         }
         return usuario_json
 

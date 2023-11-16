@@ -38,11 +38,14 @@ class Clases(Resource):
     
     @role_required(roles=["admin"])
     def post(self):
+        profesores_dni = request.get_json().get('profesores')
         clases=ClaseModel.from_json(request.get_json())
-        print(clases)
-        try:
+        
+        if profesores_dni:
+            profesores = ProfesorModel.query.filter(ProfesorModel.dni.in_(profesores_dni)).all()
+            clases.profesores.extend(profesores)
+
             db.session.add(clases)
             db.session.commit()
-        except:
-            return 'Formato no correcto', 400
+            
         return clases.to_json(), 201
