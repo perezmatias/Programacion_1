@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <div class="row center">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="text-center mb-4">Bienvenido Administrador</h1>
+            <div class="d-flex mb-3">
+                <input type="text" class="form-control me-2 flex-grow-1" placeholder="Buscar usuario..."[(ngModel)]="searchTerm" (input)="Search()">
+                <button *ngIf="selectedRole === 'admin'" class="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#nuevoUsuarioModal">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <div *ngIf="selectedRole === 'admin'" class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false"><span class="fa-solid fa-filter"></span>
+                    Filtrar Por
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" (click)="filtrar('user')">Alumno</a></li>
+                    <li><a class="dropdown-item" (click)="filtrar('profesor')">Profesor</a></li>
+                    <li><a class="dropdown-item" (click)="eliminar()">Todos</a></li>
+                </ul>
+            </div>
+
+            <!-- Paginación -->
+            <ul *ngFor="let user of arrayUsers" class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a  class='custom-hover-cursor' (click)="Perfil(user.dni)">
+                    {{user.nombre}} {{user.apellido}}
+                    </a>
+                    <div>
+                        <a type="button" *ngIf="selectedRole === 'admin'" (click)="saveDni(user)" class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal"><i class="fa-solid fa-pen-to-square text-white"></i></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
